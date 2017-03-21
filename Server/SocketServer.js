@@ -2,18 +2,30 @@ var http = require("http");
 var path = require('path');
 var fs = require("fs");
 var server = http.createServer();
-server.listen(3000);
+
 var io = require('socket.io')
 var socketStream = require("socket.io-stream");
+
+server.listen(3000);
 var ss = io.listen(server);
 
 ss.on('connection', function(socket) {
 	console.log("Connected");
-  socketStream(socket).on('sendFile', function(stream, data) {
-	  console.log("here");
-    var filename = path.basename(data.name);
-   fs.createReadStream("frank.mp3").pipe(stream);
-  });
+	
+	
+
+	socketStream(socket).on('sendFile', function(stream, data) {
+		console.log("here");
+		var filename = path.basename(data.name);
+		fs.createReadStream("frank.mp3").pipe(stream);
+
+	});
+	
+	ss.on("disconnect", function(){
+		console.log("Client disconnected.");
+		r
+	});
+
 });
 
 

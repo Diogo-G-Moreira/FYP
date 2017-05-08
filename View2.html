@@ -1,0 +1,25 @@
+
+
+<html>
+<head>
+
+
+</head>
+<body>
+<div id="app">
+
+<audio src="" id="songPlayed" autoplay controls>
+
+</audio>
+<script>
+
+var urlParams = new URLSearchParams(window.location.search);
+
+songPlay = urlParams.get('song'); 
+
+
+document.getElementById("songPlayed").src=songPlay;
+</script>
+</div>
+</body>
+</html>

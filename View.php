@@ -1,5 +1,4 @@
-<?php 
-// http://stackoverflow.com/questions/7121479/listing-all-the-folders-subfolders-and-files-in-a-directory-using-php
+<?php
 function listFolderFiles($dir){
     $ffs = scandir($dir);
     echo 'children: [';
@@ -64,7 +63,6 @@ ul {
   </li>
 </script>
 
-<p>(You can double click on an item to turn it into a folder.)</p>
 
 <!-- the demo root element -->
 <ul id="demo">
@@ -75,6 +73,7 @@ ul {
 </ul>
 </br>
 <input type="button" name="theButton" value="Stream" onclick="showDetails();">
+<p id="pText"></p>
 </body>
 </html>
 
@@ -118,6 +117,7 @@ Vue.component('item', {
 	  else{
 		  selected = this.model.name;
 		  console.log("Selected = " + selected);
+		  document.getElementById('pText').innerHTML = "Selected = " + selected;
     }
   }
   }
@@ -133,7 +133,8 @@ var demo = new Vue({
 
 function showDetails()
 {
-   window.location = '/View2.js?song='+selected;
+
+   window.location.href = 'http://localhost:8888?song='+selected;
 }
 
 </script>
